@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="Thỏ store.svg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .payment-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+
+        }
+        .payment-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #ff5733;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        .btn:hover {
+            background-color: #c8285b;
+        }
+        .btn {
+             display: block;
+            align-items: center
+            ;
+            text-align: center;
+            justify-content: center;
+        }
+        .btn-1 {
+          display: block;
+          padding: 1rem 2rem;
+          button {
+            padding: 1rem 2rem;
+            background: #c8285b;
+            cursor: pointer;
+            transition: 0.2s ease-in;
+            border-radius: 10px;
+            border: none;
+            color:white;
+          }
+          button:hover {
+            background: green;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <img src="pay.jpg" alt="QR Code">
+        <h1>QUÉT MÃ ĐỂ THANH TOÁN</h1>
+        <p>Sau khi thanh toán, bạn sẽ nhận được email xác nhận. <br> Cảm ơn bạn đã góp vốn cho mình xây cầu cá tra. </p>
+       <div class="btn-1" id="buy">
+  <button onclick="sendPaymentMessage()">Xác nhận đã thanh toán!</button>
+</div>
+        <a href="index.html" class="btn">Quay về trang chủ</a>
+    </div>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="SJmDoblD0keLGIwx7TemH";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+
+<script>
+ function sendPaymentMessage() {
+  const TOKEN = "8107732006:AAHHNgRNuZd0-weV-6bd3s9NBUq0k62GrvE";  // Thay bằng token thật của bot
+  const CHAT_ID = "7756063677"; // Thay bằng ID người nhận
+  const MESSAGE = "Người dùng đã xác nhận thanh toán! 💰✅"; 
+
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: MESSAGE
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Tin nhắn đã gửi:", data);
+      alert(`Cảm ơn bạn đã đặt hàng, đơn hàng đã được chúng tôi tiếp nhận!!!  ✅`); // Hiện thông báo
+    })
+    .catch(error => console.error("Lỗi gửi tin nhắn:", error));
+}
+
+</script>
+
+</body>
+</html>
