@@ -18,6 +18,8 @@
 body {
     font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
+  transition: background 0.5s;
+
 }
 header {
   position: relative;
@@ -299,4 +301,39 @@ footer {
 
 .product a:hover {
   background-color: #c8285b;
+}
+
+body.light {
+  background-color: white;
+
+}
+body.dark {
+  background-color: #222;
+  color:white;
+  footer {
+    background: rgb(0, 0, 0);
+    color:white;
+  }
+  footer i {
+    color:rgb(255, 255, 255);
+  }
+  h1 {
+    background: none;
+  }
+  .primary h1{
+    color:white;
+  }
+    .primary h1:hover{
+    color:#be1e4c;
+  }
+}
+
+header {
+  img {
+    cursor: pointer;
+    color:white;
+    background: white;
+    width: 4rem;
+    border-radius: 50px;
+  }
 }
